@@ -14,7 +14,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::with('user')->withCount('episodes')->get();
+        // dd($courses->toArray() ?: []);
 
         return Inertia::render('Courses/index', [
             'courses' => $courses

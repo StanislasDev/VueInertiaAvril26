@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Episode;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +17,11 @@ class Course extends Model
         'description',
         'user_id',
     ];
+
+    public function episodes()
+    {
+        return $this->hasMany(Episode::class);
+    }
 
     public function user()
     {
