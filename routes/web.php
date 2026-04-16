@@ -8,13 +8,16 @@ Route::inertia('/', 'Welcome', [
     'canRegister' => Features::enabled(Features::registration()),
 ])->name('home');
 
-// Courses
-Route::prefix('courses')->group(function () {
-    Route::get('/', [CourseController::class, 'index'])->name('courses');
-});
+// Afficher la liste des formations(Toutes les formations)
+Route::get('/courses', [CourseController::class, 'index'])->name('courses');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::group(['auth' => 'verified'], function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
+    // Courses
+    Route::prefix('courses')->group(function () {
+
+        Route::get('/{course}', [CourseController::class, 'show'])->name('courses.show');
+    });
 });
 
 require __DIR__.'/settings.php';

@@ -17,7 +17,7 @@ class CourseController extends Controller
         $courses = Course::with('user')->withCount('episodes')->get();
         // dd($courses->toArray() ?: []);
 
-        return Inertia::render('Courses/index', [
+        return Inertia::render('Courses/Index', [
             'courses' => $courses
         ]);
     }
@@ -43,7 +43,11 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        $course->load('episodes', 'user');
+
+        return Inertia::render('Courses/Show', [
+            'course' => $course
+        ]);
     }
 
     /**
