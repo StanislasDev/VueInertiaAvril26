@@ -1,4 +1,5 @@
 <template>
+    <Head title="Formations" />
     <div>
         <h1 class="text-2xl font-bold mb-4 ml-4">Les formations</h1>
 
@@ -19,12 +20,13 @@
 
 <script>
 import AppLayout from '@/layouts/AppLayout.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, Head } from '@inertiajs/vue3';
 
 export default {
     components: {
         AppLayout,
         Link,
+        Head,
     },
 
     props: ['courses'],
