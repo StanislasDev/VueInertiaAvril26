@@ -17,6 +17,7 @@ Route::group(['auth' => 'verified'], function () {
     Route::prefix('courses')->group(function () {
 
         Route::get('/{course}', [CourseController::class, 'show'])->name('courses.show');
+        Route::post('/toggle-progress', [CourseController::class, 'toggleProgress'])->name('courses.toggle');
     });
 });
 

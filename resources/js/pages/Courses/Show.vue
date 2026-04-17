@@ -15,8 +15,9 @@
             <ul v-for="(episode, index) in this.course.episodes" v-bind:key="episode.id" class="mb-2">
                 <li class="bg-gray-100 py-2 px-4 rounded hover:bg-gray-200 transition-colors duration-300 flex items-center justify-between">
                     <!-- <Link :href="`/episodes/${episode.id}`" class="text-blue-500 hover:underline" preserve-scroll>{{ episode.title }}</Link> -->
-                    épisode n°{{ index + 1 }} - {{ episode.title }}
+                    Épisode n°{{ index + 1 }} - {{ episode.title }}
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" @click="switchEpisode(index)">Voir l'épisode</button>
+                    <ProgressButton :episode-id="episode.id" :watched-episodes="watched" />
                 </li>
             </ul>
         </div>
@@ -26,15 +27,17 @@
 
 <script>
     import AppLayout from '@/layouts/AppLayout.vue';
-    import { Link } from '@inertiajs/vue3';
+    // import { Link } from '@inertiajs/vue3';
+    import ProgressButton from './ProgressButton.vue';
 
     export default {
         components: {
             AppLayout,
-            Link,
+            // Link,
+            ProgressButton,
         },
 
-        props: ['course'],
+        props: ['course', 'watched'],
 
         data() {
             return {
