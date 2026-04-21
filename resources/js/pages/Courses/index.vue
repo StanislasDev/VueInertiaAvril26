@@ -41,7 +41,7 @@ export default {
     },
 
     mounted() {
-        console.log(this.courseList);
+        // console.log(this.courseList);
     },
 }
 </script>

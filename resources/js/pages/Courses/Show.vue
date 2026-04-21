@@ -11,6 +11,11 @@
             <iframe :src="this.courseShow.episodes?.[this.currentKey]?.video_url ?? ''" class="w-full h-[100vh] rounded" :title="this.courseShow.episodes?.[this.currentKey]?.title ?? 'Épisode'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <p class="text-gray-600 mb-4">{{ this.courseShow.episodes?.[this.currentKey]?.description ?? 'Aucune description disponible' }}</p>
 
+            <!-- Progress Bar -->
+            <div>
+                <ProgressBar :watched-episodes="watched" :episodes="course.episodes" />
+            </div>
+
             <h2 class="text-xl font-semibold mb-2">Episodes</h2>
             <ul v-for="(episode, index) in this.course.episodes" v-bind:key="episode.id" class="mb-2">
                 <li class="bg-gray-100 py-2 px-4 rounded hover:bg-gray-200 transition-colors duration-300 flex items-center justify-between">
@@ -28,6 +33,7 @@
 <script>
     import AppLayout from '@/layouts/AppLayout.vue';
     // import { Link } from '@inertiajs/vue3';
+    import ProgressBar from './ProgressBar.vue';
     import ProgressButton from './ProgressButton.vue';
 
     export default {
@@ -35,6 +41,7 @@
             AppLayout,
             // Link,
             ProgressButton,
+            ProgressBar,
         },
 
         props: ['course', 'watched'],

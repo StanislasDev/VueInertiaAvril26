@@ -71,10 +71,7 @@ class CourseController extends Controller
 
         $user->episodes()->toggle($id);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Episode progress toggled'
-        ]);
+        return back();
     }
 
     /**
