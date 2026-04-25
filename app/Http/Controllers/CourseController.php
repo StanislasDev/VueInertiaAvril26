@@ -37,7 +37,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Courses/Create');
     }
 
     /**
@@ -45,7 +45,11 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $course = Course::create($request->all());
+        Inertia::flash('toast', ['type' => 'success', 'message' => 'Formation mise en ligne!']);
+
+        return redirect()->route('courses');
+        // dd($request);
     }
 
     /**

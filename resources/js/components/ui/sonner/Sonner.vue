@@ -9,6 +9,7 @@ const { appearance } = useAppearance();
 <template>
     <SonnerPrimitive
         :theme="appearance"
+        rich-colors
         class="toaster group"
         position="bottom-right"
         :style="{

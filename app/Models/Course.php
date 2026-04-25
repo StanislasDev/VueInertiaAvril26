@@ -15,8 +15,19 @@ class Course extends Model
     protected $fillable = [
         'title',
         'description',
-        'user_id',
+        // 'user_id',
     ];
+
+    /**
+     * Pour assigner l'utilisateur connecté à la formation qu'il crée
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($course) {
+            $course->user_id = auth()->id();
+        });
+    }
 
     public function episodes()
     {
